@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="stylesheet.css">
+	<title> ANANÁ VOADOR ALÁDO FLAMEJANTE </title>
+</head>
+
+<body style="border: none; margin: 0; padding: 0; font-family: sans-serif;">
+
+	<div
+		style="display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: pink; height: 100vh;">
+		<h1 style="font-size: 20px; margin-bottom: 10px;">OS MELHORES DITADOS DO MARANDUVÁ BANDEIRA</h1>
+		<iframe width="853" height="480" src="https://www.youtube.com/embed/AYVn2P2zeNc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<form>
+			<button type="button"
+				style="font-size: 20px; padding: 15px; border-radius: 8px; border: thin solid rgb(85, 85, 85); background: rgb(85, 85, 85); color: white; margin-top: 10px; box-shadow: 2px 2 px 1px rgba(0, 0, 0, 0.5);"
+				onclick="gerar()">
+				Gerar novo ditado
+			</button>
+		</form>
+		<div id="result"
+			style="background-color: rgb(85, 85, 85); color: white; margin-top: 10px; min-width: 630px; min-height: 52px; padding: 4px 8px; border-radius: 8px; text-align: center; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);">
+		</div>
+	</div>
+	<script>
+		const randInterval = (min, max) => {
+			return Math.floor(Math.random() * (max - min + 1) + min);
+		};
+
+		var liquido = [
+			"água",
+			"cerveja",
+			"chimarrão",
+			"cachaça",
+			"água de poço",
+			"água suja",
+			"água da chuva",
+			"bosta de vaca",
+			"orvalho de goteira",
+			"soro fisiológico",
+			"conhaque",
+			"whisky escocês",
+			"mijo de égua",
+			"café preto",
+			"caldo de feijão",
+			"caldo de cana",
+			"pus de espinha",
+			"caganeira de vó",
+			"sangue de ferida",
+			"suco de caju",
+			"marmelada de banana",
+			"extrato e tomate",
+			"sorvete de tamarindo",
+			"suco de tamarindo",
+			"insulina",
+			"corrimento"
+		];
+		var fruta = [
+			"melão",
+			"bergamota",
+			"jaca",
+			"laranja do céu",
+			"uva pederneira",
+			"coco queimado",
+			"pinhão",
+			"tomate seco",
+			"laranxinha",
+			"insulinda"
+		];
+		var parteDoCorpo = [
+			"a cabeça",
+			"panturrilha",
+			"sovaco",
+			"o dedão do pé",
+			"a orelha esquerda",
+			"unha encravada",
+			"cotovelo esquerdo",
+			"o umbigo",
+			"ânus",
+			"guarda-chuva",
+			"pênis",
+			"cabelo",
+			"rola",
+			"falange",
+			"exôfago",
+			"intestino delgado",
+			"língua",
+			"a espinha",
+			"a sambica",
+			"o pênis",
+			"o ânus",
+			"o reto",
+		];
+		var musica = [
+			"vanerão",
+			"pagode",
+			"funk",
+			"Elton John",
+			"Michael Jackson",
+			"é o tchan",
+			"Cumpade Washington",
+			"Bob Marley",
+			"Amado Batista",
+			"Zezé de Camargo",
+			"louvor",
+			"araketu",
+			"Calipso",
+			"Djavu",
+			"Falamansa",
+			"Joelma",
+			"menino da porteira",
+			"Baitaca",
+			"fundo da grota",
+			"Bruno Mars",
+			"punk rock",
+			"Comunidade Ninjitsu",
+			"Gordinho Bololo"
+		];
+		var objeto = [
+			"poste de luz",
+			"pedra",
+			"calça jeans",
+			"poste",
+			"arvore",
+			"janela de vidro",
+			"bicicleta",
+			"chapéu",
+			"privada suja",
+			"marfim",
+			"sofá rasgado",
+			"fiat uno",
+			"fusca velho",
+			"caralho alado voador flamejante",
+			"carruagem de fogo",
+			"batata",
+			"cabrito",
+			"ouvido",
+			"madeira",
+			"cepo de madeira",
+			"martelo de vidro",
+			"balde de oxigênio",
+			"escorredor de macarrão",
+			"palito de picolé",
+			"vassoura de palha",
+			"estaca de matar vampiro",
+			"negócio de jogar do Gudá",
+			"Raquetá",
+			"violão",
+			"bola",
+			"lixeira cagada",
+			"vaso entupido"
+		];
+		var animal = [
+			"saracura",
+			"graxaim",
+			"curupira",
+			"lobo-guará",
+			"lambisgóia",
+			"zurrilho",
+			"cachorro",
+			"cusco",
+			"javali",
+			"sobrinho do tio do pai do coisa",
+			"marmota",
+			"castor",
+			"bicho grilo",
+			"borboleta",
+			"arraia",
+			"tubarão martelo",
+			"peixe-palhaço",
+			"camaleão",
+			"cats miau",
+			"cobra naja",
+			"maranduvá",
+			"estrela do mar",
+			"mexilhão",
+			"tatu bola",
+			"onça pintada",
+			"elefante marinho",
+			"pitoco",
+			"negócio de jogá do guda",
+			"asno",
+			"anta",
+			"mamute",
+			"macake",
+			"mamaco",
+			"Maria"
+		];
+		var cores = [
+			"azul",
+			"amarelo",
+			"verde-limão",
+			"marrom-pastel",
+			"bordo",
+			"roxo-neon",
+			"azul-farol",
+			"amarelo caganeira",
+			"vermelho encarnado",
+			"laranja",
+			"marfim",
+			"arco iro",
+			"cor de burro quando foge",
+			"gelo",
+			"incolor",
+			"arco íris",
+		];
+		var statusAtual = [
+			"triste ,",
+			"com sarna ,",
+			"com problema ,",
+			"nas nuvens ,",
+			"sonhando ,",
+			"feliz ,",
+			"de luto ,",
+			"com raiva ,",
+			"indignado ,",
+			"faceiro ,",
+			"de boas ,",
+			"sem saco ,",
+			"maroto ,",
+			"sorrindo atoa ,",
+			"com depressão ,",
+			"esquizofrenico ,",
+			"puto ,",
+			"chapado ,",
+			"galponeiro ,",
+			"tóxico ,"
+		];
+		var fatos = [
+			{ fato: "dança ", precisa: ["musica"] },
+			{ fato: "lambe ", precisa: ["objeto"] },
+			{ fato: "morde caroço ", precisa: ["fruta"], extra: "de " },
+			{ fato: "olha torto", precisa: ["objeto"], extra: "pra " },
+			{ fato: "pula pra tráz", precisa: [] },
+			{ fato: "caminha em duas patas", precisa: [] },
+			{ fato: "vira cambalhota", precisa: [] },
+			{ fato: "conhece", precisa: ["musica"] },
+			{ fato: "dorme em dia quente", precisa: [] },
+			{ fato: "conhece o dono", precisa: [] },
+			{ fato: "bate palma com as mãos", precisa: [] },
+			{ fato: "vira a noite olhando pro chão", precisa: [] },
+			{ fato: "bebe", precisa: ["liquido"] },
+			{ fato: "pula", precisa: ["objeto"], extra: "de " },
+			{ fato: "bate ", precisa: ["objeto"], extra: "em " },
+			{ fato: "lambe", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "coça", precisa: ["parteDoCorpo"] },
+			{ fato: "cutuca", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "sopra", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "enfia", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "esfrega o ânus ,", precisa: ["objeto", "musica"] },
+			{ fato: "da mortal pra trás", precisa: ["objeto", "musica"] },
+			{ fato: "faz fofoca pra", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "rouba", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "rola", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "beija", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "caga", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "mija", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "garganteia", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "desdobra", precisa: ["objeto", "parteDoCorpo"] },
+			{ fato: "atira", precisa: ["musica", "parteDoCorpo"] },
+			{ fato: "busca", precisa: ["objeto", "parteDoCorpo"] },
+		];
+		function precisa(config) {
+			let item =
+				config.precisa[randInterval(0, config.precisa.length - 1)];
+			return (
+				" " +
+				(config.extra ? config.extra : " ") +
+				" " +
+				window[item][randInterval(0, window[item].length - 1)]
+			);
+		}
+		function caracterizacaoAleatoria() {
+			let decisaoAleatoria = randInterval(0, 1) == 1;
+			if (decisaoAleatoria) {
+				return cores[randInterval(0, cores.length - 1)];
+			}
+			return statusAtual[randInterval(0, statusAtual.length - 1)];
+		}
+		function gerar() {
+			var a = animal[randInterval(0, animal.length - 1)];
+			var b = Object.assign(
+				{},
+				fatos[randInterval(0, fatos.length - 1)]
+			);
+
+			let negativoAleatorioA = randInterval(0, 4) == 1;
+			if (negativoAleatorioA) {
+				b.fato = " não " + b.fato;
+			}
+			var c = "";
+			if (b.precisa.length) {
+				c = precisa(b);
+				let caracterizarAleatoriamente = randInterval(0, 1) == 1;
+				if (caracterizarAleatoriamente) {
+					c = c + " " + caracterizacaoAleatoria();
+				}
+			}
+			var d = Object.assign(
+				{},
+				fatos[randInterval(0, fatos.length - 1)]
+			);
+
+			while (d == b) {
+				d = Object.assign(
+					{},
+					fatos[randInterval(0, fatos.length - 1)]
+				);
+			}
+			let negativoAleatorioB = randInterval(0, 3) > 0;
+			if (negativoAleatorioB) {
+				d.fato = " não " + d.fato;
+			}
+			var e = "";
+			if (d.precisa.length) {
+				e = precisa(d);
+				let caracterizarAleatoriamente = randInterval(0, 3) == 1;
+				if (caracterizarAleatoriamente) {
+					e = e + " " + caracterizacaoAleatoria();
+				}
+			}
+
+			let resultado =
+				a + " que " + b.fato + c + " " + d.fato + " " + e;
+			document.getElementById("result").innerHTML = resultado;
+		}
+	</script>
+
+</html>
